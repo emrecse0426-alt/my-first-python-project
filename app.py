@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route('/')
 def add_numbers():
@@ -11,6 +11,9 @@ def add_numbers():
         <button type='submit'>Add</button>
     </form>
     """ + (
-        f"Sum: {int(request.args.get('num1',0)) + int(request.args.get('num2',0))}"
+        f"Sum: {int(request.args.get('num1', 0)) + int(request.args.get('num2', 0))}"
         if 'num1' in request.args and 'num2' in request.args else ''
     )
+
+if __name__ == '__main__':
+    app.run(debug=True)
